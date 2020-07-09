@@ -1,21 +1,21 @@
 import React, {useEffect} from 'react';
 import axios from "axios";
 
-const GetStorage = () => {
-    const [storage, setStorage] = React.useState([]);
+const GetStorages = () => {
+    const [storages, setStorages] = React.useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:3001/storage")
+        axios.get("http://localhost:3001/storages")
             .then(res => {
-                const storage = res.data;
-                setStorage(storage);
+                const storages = res.data;
+                setStorages(storages);
             }).catch((error) => {
             console.log(error);
         });
-    }, ["http://localhost:3001/storage"]);
+    }, ["http://localhost:3001/storages"]);
 
     function deleteStorage(id) {
-        axios.delete("http://localhost:3001/storage/" + id + "/delete")
+        axios.delete("http://localhost:3001/storages/" + id + "/delete")
             .then(res => {
 
             })
@@ -36,14 +36,14 @@ const GetStorage = () => {
             </tr>
             </thead>
             <tbody>
-            {storage.map((storage, index) =>
+            {storages.map((storage, index) =>
                 <tr key={index}>
                     <td>{storage._id}</td>
                     <td>{storage.name}</td>
-                    <td>{storage._getSlots}</td>
+                    {/*<td>{storage.slots}</td>*/}
                     <td>{storage.type1}</td>
                     <td>{storage.type2}</td>
-                    <td>{storage._owner}</td>
+                    <td>{storage.owner}</td>
                     <td>
                         <button onClick={deleteStorage(storage._id)}><img src="delete.png" alt="" className="icon"/>
                         </button>
@@ -57,4 +57,4 @@ const GetStorage = () => {
 
 };
 
-export default GetStorage;
+export default GetStorages;

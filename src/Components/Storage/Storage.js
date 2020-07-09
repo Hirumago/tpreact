@@ -1,6 +1,6 @@
 import React from 'react';
 import CreateStorage from "./CreateStorage";
-import GetStorage from "./GetStorage";
+import GetStorage from "./GetStorages";
 
 export default class Storage extends React.Component {
     state = {
