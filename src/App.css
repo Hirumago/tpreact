@@ -55,3 +55,13 @@ table th, table td{
     width: 32px;
     height: 32px;
 }
+
+.getStorage{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.getStorage table{
+    text-align: center;
+    margin: auto;
+}
