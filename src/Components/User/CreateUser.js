@@ -20,9 +20,9 @@ class CreateUser extends React.Component {
             email: this.state.email
         }, )
             .then(res => {
-                    console.log(res)
+                    this.state.refresh = true;
                 }
-            ).catch((error) => {
+            ).catch(error => {
                 this.setState({error: "Erreur"});
             });
         event.preventDefault();

@@ -50,3 +50,8 @@
 table th, table td{
     border: 1px solid black;
 }
+
+.icon{
+    width: 32px;
+    height: 32px;
+}
