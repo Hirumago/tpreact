@@ -1,9 +1,10 @@
 import React from 'react';
+import axios from "axios";
 
 class CreateUser extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {name: '', email: ''};
+        this.state = {name: '', email: '', error: ''};
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -14,7 +15,16 @@ class CreateUser extends React.Component {
     }
 
     handleSubmit(event) {
-        alert("nom : " + this.state.name + ", email : " +  this.state.email);
+        axios.post("http://localhost:3001/users", {
+            name: this.state.name,
+            email: this.state.email
+        }, )
+            .then(res => {
+                    console.log(res)
+                }
+            ).catch((error) => {
+                this.setState({error: "Erreur"});
+            });
         event.preventDefault();
     }
 
@@ -31,7 +41,9 @@ class CreateUser extends React.Component {
                         Email :
                         <input type="email" name="email" onChange={this.handleChange} required={true}/>
                     </label>
-                    <input type="submit" value="Envoyer" />
+                    <input type="submit" value="Envoyer"/>
+
+                    <p>{this.state.error}</p>
                 </form>
             </div>
         )
