@@ -1,23 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import axios from "axios";
 
 const GetUsers = () => {
     const [users, setUsers] = React.useState([]);
 
-    function getUsers(){
+    useEffect(() => {
         axios.get("http://localhost:3001/users")
             .then(res => {
                 const users = res.data;
-                setUsers( users );
-            });
-    }
+                setUsers(users);
+            }).catch((error) => {
+            console.log(error);
+        });
+    }, ["http://localhost:3001/users"]);
 
-    function deleteUser(id, index){
-        axios.delete("http://localhost:3001/users/"+id+"/delete")
+    function deleteUser(id) {
+        axios.delete("http://localhost:3001/users/" + id + "/delete")
             .then(res => {
-                let usersTemp = users;
-                usersTemp = usersTemp.slice(index, 1);
-                setUsers( usersTemp );
+
             })
     }
 
@@ -38,7 +38,8 @@ const GetUsers = () => {
                     <td>{user.name}</td>
                     <td>{user.email}</td>
                     <td>
-                        <button onClick={deleteUser(user._id, index)}><img src="delete.png" alt="" className="icon"/></button>
+                        <button onClick={deleteUser(user._id)}><img src="delete.png" alt="" className="icon"/>
+                        </button>
                     </td>
                 </tr>
             )}

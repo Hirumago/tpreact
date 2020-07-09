@@ -6,6 +6,13 @@ const CreateUser = () => {
     const [email, setEmail] = React.useState("");
     const [error, setError] = React.useState("");
 
+    function handleChangeName(event){
+        setName(event.target.value);
+    }
+    function handleChangeEmail(event){
+        setEmail(event.target.value);
+    }
+
     function handleSubmit(event) {
         axios.post("http://localhost:3001/users", {
             name: name,
@@ -27,11 +34,11 @@ const CreateUser = () => {
             <form onSubmit={handleSubmit}>
                 <label>
                     Nom :
-                    <input type="text" name="name" required={true}/>
+                    <input type="text" name="name" onChange={handleChangeName} required={true}/>
                 </label>
                 <label>
                     Email :
-                    <input type="email" name="email" required={true}/>
+                    <input type="email" name="email" onChange={handleChangeEmail} required={true}/>
                 </label>
                 <input type="submit" value="Envoyer"/>
 
