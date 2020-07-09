@@ -14,7 +14,7 @@ const GetPokemon = () => {
         });
     }, ["http://localhost:3001/pokemons"]);
 
-    function deletePokemons(id) {
+    function deletePokemon(id) {
         axios.delete("http://localhost:3001/pokemons/" + id + "/delete")
             .then(res => {
 
@@ -44,7 +44,7 @@ const GetPokemon = () => {
                     <td>{storage.type2}</td>
                     <td>{pokemon.level}</td>
                     <td>
-                        <button onClick={deletePokemons(pokemon._id)}><img src="delete.png" alt="" className="icon"/>
+                        <button onClick={deletePokemon(pokemon._id)}><img src="delete.png" alt="" className="icon"/>
                         </button>
                     </td>
                 </tr>
@@ -53,7 +53,6 @@ const GetPokemon = () => {
 
         </table>
     )
-
 
 };
 
