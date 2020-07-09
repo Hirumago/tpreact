@@ -54,6 +54,7 @@ const GetPokemon = () => {
         </table>
     )
 
+
 };
 
 export default GetPokemon;
