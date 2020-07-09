@@ -1,54 +1,46 @@
 import React from 'react';
 import axios from "axios";
 
-class CreateUser extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {name: '', email: '', error: ''};
+const CreateUser = () => {
+    const [name, setName] = React.useState("");
+    const [email, setEmail] = React.useState("");
+    const [error, setError] = React.useState("");
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(event) {
-        this.setState({[event.target.name]: event.target.value});
-    }
-
-    handleSubmit(event) {
+    function handleSubmit(event) {
         axios.post("http://localhost:3001/users", {
-            name: this.state.name,
-            email: this.state.email
+            name: name,
+            email: email
         }, )
             .then(res => {
-                    this.state.refresh = true;
+                    // this.state.refresh = true;
                 }
             ).catch(error => {
-                this.setState({error: "Erreur"});
+                setError("Erreur");
             });
         event.preventDefault();
     }
 
-    render() {
-        return (
-            <div>
-                <h2>Créer un utilisateur</h2>
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Nom :
-                        <input type="text" name="name" onChange={this.handleChange} required={true}/>
-                    </label>
-                    <label>
-                        Email :
-                        <input type="email" name="email" onChange={this.handleChange} required={true}/>
-                    </label>
-                    <input type="submit" value="Envoyer"/>
 
-                    <p>{this.state.error}</p>
-                </form>
-            </div>
-        )
+    return (
+        <div>
+            <h2>Créer un utilisateur</h2>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Nom :
+                    <input type="text" name="name" required={true}/>
+                </label>
+                <label>
+                    Email :
+                    <input type="email" name="email" required={true}/>
+                </label>
+                <input type="submit" value="Envoyer"/>
 
-    }
-}
+                <p>{error}</p>
+            </form>
+        </div>
+    )
+
+
+};
 
 export default CreateUser;

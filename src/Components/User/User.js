@@ -2,21 +2,17 @@ import React from 'react';
 import CreateUser from "./CreateUser";
 import GetUsers from "./GetUsers";
 
-export default class User extends React.Component {
-    state = {
-        refresh: false
-    };
-
-    render() {
-        return (
+const User = () => {
+    return (
+        <div>
             <div>
-                <div>
-                    <CreateUser></CreateUser>
-                </div>
-                <div className="getUsers">
-                    <GetUsers></GetUsers>
-                </div>
+                <CreateUser></CreateUser>
             </div>
-        )
-    }
-}
+            <div className="getUsers">
+                <GetUsers></GetUsers>
+            </div>
+        </div>
+    )
+};
+
+export default User;
