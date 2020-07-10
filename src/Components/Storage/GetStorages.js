@@ -36,7 +36,11 @@ const GetStorages = () => {
                     <td>{storage._id}</td>
                     <td>{storage.rank}</td>
                     <td>{storage.name}</td>
-                    {/*<td>{storage.slots}</td>*/}
+                    <td>
+                        {storage.slots.map((slot, subindex) =>
+                            <p key={subindex}>{slot}</p>
+                        )}
+                    </td>
                     <td>{storage.type1}</td>
                     <td>{storage.type2}</td>
                     <td>{storage.owner}</td>
