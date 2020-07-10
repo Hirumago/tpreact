@@ -5,7 +5,7 @@ import axios from "axios";
 const CreateStorage = (props) => {
    const [rank, setRank] = React.useState("");
    const [name, setName] = React.useState("");
-   const [slots, setSlots] = React.useState("");
+   const [slots, setSlots] = React.useState([]);
    const [type1, setType1] = React.useState("");
    const [type2, setType2] = React.useState("");
    const [owner, setOwner] = React.useState("");
@@ -22,14 +22,6 @@ const CreateStorage = (props) => {
    function handleChangeSlots(event){
        setSlots(event.target.value);
    }
-
-    function handleChangeType1(event){
-        setType1(event.target.value);
-    }
-
-    function handleChangeType2(event){
-        setType2(event.target.value);
-    }
 
     function handleChangeOwner(event){
         setOwner(event.target.value);
@@ -55,7 +47,7 @@ const CreateStorage = (props) => {
 
     return (
         <div>
-            <h2>Créer une boîte de stockage</h2>
+            <h2>Créer un espace de stockage</h2>
             <form onSubmit={handleSubmit}>
                 <label>
                     Rang :
@@ -65,15 +57,6 @@ const CreateStorage = (props) => {
                     Nom :
                     <input type="text" name="name" onChange={handleChangeName} required={true}/>
                 </label>
-                {/*<label>*/}
-                {/*<label>*/}
-                {/*    Type 1 :*/}
-                {/*    <input type="text" name="name" onChange={handleChangeType1} required={true}/>*/}
-                {/*</label>*/}
-                {/*<label>*/}
-                {/*    Type 2 :*/}
-                {/*    <input type="text" name="name" onChange={handleChangeType2} required={true}/>*/}
-                {/*</label>*/}
                 <label>
                     Propriétaire :
                     <input type="text" name="text" onChange={handleChangeOwner} required={true}/>

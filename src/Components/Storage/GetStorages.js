@@ -9,7 +9,7 @@ const GetStorages = (props) => {
     useEffect(() => {
         axios.get(url)
             .then(res => {
-                const users = res.data;
+                const storages = res.data;
                 setStorages(storages);
                 setRefresh(false);
                 props.setRefreshStorages(false);
@@ -19,49 +19,53 @@ const GetStorages = (props) => {
     }, [url, refresh, props.refreshStorages]);
 
     return (
-        <table>
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Rang</th>
-                <th>Nom</th>
-                <th>Slots</th>
-                <th>Type 1</th>
-                <th>Type 2</th>
-                <th>Propriétaire</th>
-                <th>Suppression</th>
-            </tr>
-            </thead>
-            <tbody>
-            {storages.map((storage, index) =>
-                <tr key={index}>
-                    <td>{storage._id}</td>
-                    <td>{storage.rank}</td>
-                    <td>{storage.name}</td>
-                    <td>
-                        {storage.slots.map((slot, subindex) =>
-                            <p key={subindex}>{slot}</p>
-                        )}
-                    </td>
-                    <td>{storage.type1}</td>
-                    <td>{storage.type2}</td>
-                    <td>{storage.owner}</td>
-                    <td>
-                        <button onClick={() =>
-                            axios.delete("http://localhost:3001/storages/" + storage._id + "/delete")
-                                .then(res => {
-                                    setRefresh(true)
-                                }).catch((error) => {
-                                console.log(error);
-                            })
-                        }><img src="delete.png" alt="" className="icon"/></button>
-
-                    </td>
+        <div>
+            <h2>Liste des espaces de stockages</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Rang</th>
+                    <th>Nom</th>
+                    <th>Slots</th>
+                    <th>Type 1</th>
+                    <th>Type 2</th>
+                    <th>Propriétaire</th>
+                    <th>Suppression</th>
                 </tr>
-            )}
-            </tbody>
+                </thead>
+                <tbody>
+                {storages.map((storage, index) =>
+                    <tr key={index}>
+                        <td>{storage._id}</td>
+                        <td>{storage.rank}</td>
+                        <td>{storage.name}</td>
+                        <td>
+                            {storage.slots.map((slot, subindex) =>
+                                <p key={subindex}>{slot}</p>
+                            )}
+                        </td>
+                        <td>{storage.type1}</td>
+                        <td>{storage.type2}</td>
+                        <td>{storage.owner}</td>
+                        <td>
+                            <button onClick={() =>
+                                axios.delete("http://localhost:3001/storages/" + storage._id + "/delete")
+                                    .then(res => {
+                                        setRefresh(true)
+                                    }).catch((error) => {
+                                    console.log(error);
+                                })
+                            }><img src="delete.png" alt="" className="icon"/></button>
 
-        </table>
+                        </td>
+                    </tr>
+                )}
+                </tbody>
+
+            </table>
+        </div>
+
     )
 
 };
