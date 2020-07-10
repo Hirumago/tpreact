@@ -2,7 +2,7 @@ import React from 'react';
 import CreatePokemon from "./CreatePokemon";
 import GetPokemons from "./GetPokemons";
 
-const User = () => {
+const Pokemon = () => {
     const [refreshPokemons, setRefreshPokemons] = React.useState(false);
 
         return (
@@ -15,4 +15,6 @@ const User = () => {
                 </div>
             </div>
         )
-}
+};
+
+export default Pokemon;
