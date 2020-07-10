@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import axios from "axios";
 
 const GetPokemons = (props) => {
-    const [pokemons, setPokemons] = React.useState([]);
     const [url, setUrl] = React.useState("http://localhost:3001/pokemons");
     const [refresh, setRefresh] = React.useState(false);
 
@@ -10,7 +9,7 @@ const GetPokemons = (props) => {
         axios.get(url)
             .then(res => {
                 const pokemonsTemp = res.data;
-                setPokemons(pokemonsTemp);
+                props.setPokemons(pokemonsTemp);
                 setRefresh(false);
                 props.setRefreshPokemons(false);
             }).catch((error) => {
@@ -34,7 +33,7 @@ const GetPokemons = (props) => {
                 </tr>
                 </thead>
                 <tbody>
-                {pokemons.map((pokemon, index) =>
+                {props.pokemons.map((pokemon, index) =>
                     <tr key={index}>
                         <td>{pokemon._id}</td>
                         <td>{pokemon.rank}</td>

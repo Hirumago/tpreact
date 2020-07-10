@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import axios from "axios";
 
 const GetStorages = (props) => {
-    const [storages, setStorages] = React.useState([]);
     const [url, setUrl] = React.useState("http://localhost:3001/storages");
     const [refresh, setRefresh] = React.useState(false);
 
@@ -10,7 +9,7 @@ const GetStorages = (props) => {
         axios.get(url)
             .then(res => {
                 const storagesTemp = res.data;
-                setStorages(storagesTemp);
+                props.setStorages(storagesTemp);
                 setRefresh(false);
                 props.setRefreshStorages(false);
             }).catch((error) => {
@@ -35,7 +34,7 @@ const GetStorages = (props) => {
                 </tr>
                 </thead>
                 <tbody>
-                {storages.map((storage, index) =>
+                {props.storages.map((storage, index) =>
                     <tr key={index}>
                         <td>{storage._id}</td>
                         <td>{storage.rank}</td>

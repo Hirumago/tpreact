@@ -2,7 +2,7 @@ import React from 'react';
 import CreateUser from "./CreateUser";
 import GetUsers from "./GetUsers";
 
-const User = () => {
+const User = (props) => {
     const [refreshUsers, setRefreshUsers] = React.useState(false);
 
     return (
@@ -11,7 +11,7 @@ const User = () => {
                 <CreateUser setRefreshUsers={setRefreshUsers}></CreateUser>
             </div>
             <div className="getUsers">
-                <GetUsers refreshUsers={refreshUsers} setRefreshUsers={setRefreshUsers}></GetUsers>
+                <GetUsers refreshUsers={refreshUsers} setRefreshUsers={setRefreshUsers} users={props.users} setUsers={props.setUsers}></GetUsers>
             </div>
         </div>
     )

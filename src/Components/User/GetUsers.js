@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import axios from "axios";
 
 const GetUsers = (props) => {
-    const [users, setUsers] = React.useState([]);
     const [url, setUrl] = React.useState("http://localhost:3001/users");
     const [refresh, setRefresh] = React.useState(false);
 
@@ -10,7 +9,8 @@ const GetUsers = (props) => {
         axios.get(url)
             .then(res => {
                 const usersTemp = res.data;
-                setUsers(usersTemp);
+                // setUsers(usersTemp);
+                props.setUsers(usersTemp);
                 setRefresh(false);
                 props.setRefreshUsers(false);
             }).catch((error) => {
@@ -32,7 +32,7 @@ const GetUsers = (props) => {
                 </tr>
                 </thead>
                 <tbody>
-                {users.map((user, index) =>
+                {props.users.map((user, index) =>
                     <tr key={index}>
                         <td>{user._id}</td>
                         <td>{user.name}</td>
