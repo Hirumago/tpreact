@@ -9,8 +9,8 @@ const GetUsers = (props) => {
     useEffect(() => {
         axios.get(url)
             .then(res => {
-                const users = res.data;
-                setUsers(users);
+                const usersTemp = res.data;
+                setUsers(usersTemp);
                 setRefresh(false);
                 props.setRefreshUsers(false);
             }).catch((error) => {

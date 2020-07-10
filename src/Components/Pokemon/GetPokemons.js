@@ -9,8 +9,8 @@ const GetPokemons = (props) => {
     useEffect(() => {
         axios.get(url)
             .then(res => {
-                const pokemons = res.data;
-                setPokemons(pokemons);
+                const pokemonsTemp = res.data;
+                setPokemons(pokemonsTemp);
                 setRefresh(false);
                 props.setRefreshPokemons(false);
             }).catch((error) => {
