@@ -1,16 +1,16 @@
 import React, {useEffect} from 'react';
 import axios from "axios";
 
-const GetStorages = () => {
-    const [storages, setStorages] = React.useState([]);
-    const [url, setUrl] = React.useState("http://localhost:3001/storages");
+const GetPokemons = () => {
+    const [pokemons, setPokemons] = React.useState([]);
+    const [url, setUrl] = React.useState("http://localhost:3001/pokemons");
     const [refresh, setRefresh] = React.useState(0);
 
     useEffect(() => {
         axios.get(url)
             .then(res => {
-                const storages = res.data;
-                setStorages(storages);
+                const pokemons = res.data;
+                setPokemons(pokemons);
             }).catch((error) => {
             console.log(error);
         });
@@ -23,26 +23,24 @@ const GetStorages = () => {
                 <th>Id</th>
                 <th>Rang</th>
                 <th>Nom</th>
-                <th>Slots</th>
                 <th>Type 1</th>
                 <th>Type 2</th>
-                <th>Propriétaire</th>
+                <th>Niveau</th>
                 <th>Suppression</th>
             </tr>
             </thead>
             <tbody>
-            {storages.map((storage, index) =>
+            {pokemons.map((pokemon, index) =>
                 <tr key={index}>
-                    <td>{storage._id}</td>
-                    <td>{storage.rank}</td>
-                    <td>{storage.name}</td>
-                    {/*<td>{storage.slots}</td>*/}
-                    <td>{storage.type1}</td>
-                    <td>{storage.type2}</td>
-                    <td>{storage.owner}</td>
+                    <td>{pokemon._id}</td>
+                    <td>{pokemon.rank}</td>
+                    <td>{pokemon.name}</td>
+                    <td>{pokemon.type1}</td>
+                    <td>{pokemon.type2}</td>
+                    <td>{pokemon.level}</td>
                     <td>
                         <button onClick={() =>
-                            axios.delete("http://localhost:3001/storages/" + storage._id + "/delete")
+                            axios.delete("http://localhost:3001/pokemons/" + pokemon._id + "/delete")
                                 .then(res => {
                                     setRefresh(1)
                                 }).catch((error) => {
@@ -60,4 +58,4 @@ const GetStorages = () => {
 
 };
 
-export default GetStorages;
+export default GetPokemons;

@@ -1,6 +1,6 @@
 import React from 'react';
 import CreateStorage from "./CreateStorage";
-import GetStorage from "./GetStorages";
+import GetStorages from "./GetStorages";
 
 export default class Storage extends React.Component {
     state = {
@@ -10,11 +10,11 @@ export default class Storage extends React.Component {
     render() {
         return (
             <div>
-                <div>
-                    <CreateStorage></CreateStorage>
-                </div>
+                {/*<div>*/}
+                {/*    <CreateStorage></CreateStorage>*/}
+                {/*</div>*/}
                 <div className="getStorage">
-                    <GetStorage></GetStorage>
+                    <GetStorages></GetStorages>
                 </div>
             </div>
         )
