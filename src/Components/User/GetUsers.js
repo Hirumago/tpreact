@@ -1,20 +1,22 @@
 import React, {useEffect} from 'react';
 import axios from "axios";
 
-const GetUsers = () => {
+const GetUsers = (props) => {
     const [users, setUsers] = React.useState([]);
     const [url, setUrl] = React.useState("http://localhost:3001/users");
-    const [refresh, setRefresh] = React.useState(0);
+    const [refresh, setRefresh] = React.useState(false);
 
     useEffect(() => {
         axios.get(url)
             .then(res => {
                 const users = res.data;
                 setUsers(users);
+                setRefresh(false);
+                props.setRefreshUsers(false);
             }).catch((error) => {
             console.log(error);
         });
-    }, [url, refresh]);
+    }, [url, refresh, props.refreshUsers]);
 
     return (
         <table>
@@ -36,7 +38,7 @@ const GetUsers = () => {
                         <button onClick={() =>
                             axios.delete("http://localhost:3001/users/" + user._id + "/delete")
                                 .then(res => {
-                                    setRefresh(1)
+                                    setRefresh(true)
                                 }).catch((error) => {
                                 console.log(error);
                             })

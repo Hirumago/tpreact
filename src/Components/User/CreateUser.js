@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from "axios";
 
-const CreateUser = () => {
+const CreateUser = (props) => {
     const [name, setName] = React.useState("");
     const [email, setEmail] = React.useState("");
     const [error, setError] = React.useState("");
@@ -19,10 +19,10 @@ const CreateUser = () => {
             email: email
         }, )
             .then(res => {
-                    // this.state.refresh = true;
+                    props.setRefreshUsers(true)
                 }
             ).catch(error => {
-                setError("Erreur");
+                console.log(error);
             });
         event.preventDefault();
     }

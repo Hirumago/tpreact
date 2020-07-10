@@ -37,12 +37,12 @@
     }
 }
 
-.getUsers{
+.getUsers, .getStorage, .getPokemon{
     margin-top: 20px;
     text-align: center;
 }
 
-.getUsers table{
+.getUsers table, .getStorage table, .getPokemon table{
     text-align: center;
     margin: auto;
 }
@@ -54,14 +54,4 @@ table th, table td{
 .icon{
     width: 32px;
     height: 32px;
-}
-
-.getStorage{
-    margin-top: 20px;
-    text-align: center;
-}
-
-.getStorage table{
-    text-align: center;
-    margin: auto;
 }
