@@ -2,21 +2,17 @@ import React from 'react';
 import CreateStorage from "./CreateStorage";
 import GetStorages from "./GetStorages";
 
-export default class Storage extends React.Component {
-    state = {
-        refresh: false
-    };
+const Storage = () => {
+    const [refreshStorages, setRefreshStorages] = React.useState(false);
 
-    render() {
         return (
             <div>
                 <div>
-                    <CreateStorage></CreateStorage>
+                    <CreateStorage setRefreshStorages={setRefreshStorages}></CreateStorage>
                 </div>
                 <div className="getStorage">
-                    <GetStorages></GetStorages>
+                    <GetStorages refreshStorages={[refreshStorages]} setRefreshStorages = {setRefreshStorages}></GetStorages>
                 </div>
             </div>
         )
-    }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import axios from "axios";
 
 
-const CreateStorage = () => {
+const CreateStorage = (props) => {
    const [rank, setRank] = React.useState("");
    const [name, setName] = React.useState("");
    const [slots, setSlots] = React.useState("");
@@ -45,7 +45,7 @@ const CreateStorage = () => {
             owner: owner
         }, )
             .then(res => {
-                    // this.state.refresh = true;
+                     props.setRefreshStorages(true)
                 }
             ).catch(error => {
             setError("Erreur");

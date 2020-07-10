@@ -2,21 +2,17 @@ import React from 'react';
 import CreatePokemon from "./CreatePokemon";
 import GetPokemons from "./GetPokemons";
 
-export default class Pokemon extends React.Component {
-    state = {
-        refresh: false
-    };
+const User = () => {
+    const [refreshPokemons, setRefreshPokemons] = React.useState(false);
 
-    render() {
         return (
             <div>
                 {/*<div>*/}
-                {/*    <CreatePokemon></CreatePokemon>*/}
+                {/*    <CreatePokemon setRefreshPokemons = {setRefreshPokemons}></CreatePokemon>*/}
                 {/*</div>*/}
                 <div className="getPokemon">
-                    <GetPokemons></GetPokemons>
+                    <GetPokemons refreshPokemons = {refreshPokemons} setRefreshPokemons = {setRefreshPokemons}></GetPokemons>
                 </div>
             </div>
         )
-    }
 }

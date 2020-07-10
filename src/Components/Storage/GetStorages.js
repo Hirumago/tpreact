@@ -1,20 +1,22 @@
 import React, {useEffect} from 'react';
 import axios from "axios";
 
-const GetStorages = () => {
+const GetStorages = (props) => {
     const [storages, setStorages] = React.useState([]);
     const [url, setUrl] = React.useState("http://localhost:3001/storages");
-    const [refresh, setRefresh] = React.useState(0);
+    const [refresh, setRefresh] = React.useState(false);
 
     useEffect(() => {
         axios.get(url)
             .then(res => {
-                const storages = res.data;
+                const users = res.data;
                 setStorages(storages);
+                setRefresh(false);
+                props.setRefreshStorages(false);
             }).catch((error) => {
             console.log(error);
         });
-    }, [url, refresh]);
+    }, [url, refresh, props.refreshStorages]);
 
     return (
         <table>
@@ -48,7 +50,7 @@ const GetStorages = () => {
                         <button onClick={() =>
                             axios.delete("http://localhost:3001/storages/" + storage._id + "/delete")
                                 .then(res => {
-                                    setRefresh(1)
+                                    setRefresh(true)
                                 }).catch((error) => {
                                 console.log(error);
                             })

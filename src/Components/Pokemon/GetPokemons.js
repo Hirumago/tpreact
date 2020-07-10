@@ -1,20 +1,22 @@
 import React, {useEffect} from 'react';
 import axios from "axios";
 
-const GetPokemons = () => {
+const GetPokemons = (props) => {
     const [pokemons, setPokemons] = React.useState([]);
     const [url, setUrl] = React.useState("http://localhost:3001/pokemons");
-    const [refresh, setRefresh] = React.useState(0);
+    const [refresh, setRefresh] = React.useState(false);
 
     useEffect(() => {
         axios.get(url)
             .then(res => {
-                const pokemons = res.data;
+                const users = res.data;
                 setPokemons(pokemons);
+                setRefresh(false);
+                props.setRefreshPokemons(false);
             }).catch((error) => {
             console.log(error);
         });
-    }, [url, refresh]);
+    }, [url, refresh, props.refreshPokemons]);
 
     return (
         <table>
@@ -42,7 +44,7 @@ const GetPokemons = () => {
                         <button onClick={() =>
                             axios.delete("http://localhost:3001/pokemons/" + pokemon._id + "/delete")
                                 .then(res => {
-                                    setRefresh(1)
+                                    setRefresh(true)
                                 }).catch((error) => {
                                 console.log(error);
                             })
