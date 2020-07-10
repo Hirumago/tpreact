@@ -50,7 +50,7 @@ const GetStorages = (props) => {
                         <td>{storage.owner}</td>
                         <td>
                             <button onClick={() =>
-                                axios.delete("http://localhost:3001/storages/" + storage._id + "/delete")
+                                axios.delete("http://localhost:3001/storages/" + storage._id + "/delete/"+storage.owner)
                                     .then(res => {
                                         setRefresh(true)
                                     }).catch((error) => {
