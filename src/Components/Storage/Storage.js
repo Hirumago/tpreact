@@ -1,7 +1,7 @@
 import React from 'react';
 import CreateStorage from "./CreateStorage";
 import GetStorages from "./GetStorages";
-import User from "../User/User";
+
 
 const Storage = () => {
     const [refreshStorages, setRefreshStorages] = React.useState(false);

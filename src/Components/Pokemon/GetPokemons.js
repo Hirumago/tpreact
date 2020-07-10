@@ -9,7 +9,7 @@ const GetPokemons = (props) => {
     useEffect(() => {
         axios.get(url)
             .then(res => {
-                const users = res.data;
+                const pokemons = res.data;
                 setPokemons(pokemons);
                 setRefresh(false);
                 props.setRefreshPokemons(false);

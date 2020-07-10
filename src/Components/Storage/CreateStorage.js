@@ -5,7 +5,7 @@ import axios from "axios";
 const CreateStorage = (props) => {
    const [rank, setRank] = React.useState("");
    const [name, setName] = React.useState("");
-   const [slots, setSlots] = React.useState("");
+   const [slots, setSlots] = React.useState([]);
    const [type1, setType1] = React.useState("");
    const [type2, setType2] = React.useState("");
    const [owner, setOwner] = React.useState("");
@@ -65,15 +65,6 @@ const CreateStorage = (props) => {
                     Nom :
                     <input type="text" name="name" onChange={handleChangeName} required={true}/>
                 </label>
-                {/*<label>*/}
-                {/*<label>*/}
-                {/*    Type 1 :*/}
-                {/*    <input type="text" name="name" onChange={handleChangeType1} required={true}/>*/}
-                {/*</label>*/}
-                {/*<label>*/}
-                {/*    Type 2 :*/}
-                {/*    <input type="text" name="name" onChange={handleChangeType2} required={true}/>*/}
-                {/*</label>*/}
                 <label>
                     Propriétaire :
                     <input type="text" name="text" onChange={handleChangeOwner} required={true}/>

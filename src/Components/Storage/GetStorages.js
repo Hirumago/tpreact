@@ -9,8 +9,8 @@ const GetStorages = (props) => {
     useEffect(() => {
         axios.get(url)
             .then(res => {
-                const users = res.data;
-                setStorages(storages);
+                const storagesTemp = res.data;
+                setStorages(storagesTemp);
                 setRefresh(false);
                 props.setRefreshStorages(false);
             }).catch((error) => {
