@@ -60,12 +60,12 @@ const CreateUser = (props) => {
                     <select onChange={handleChangeOwner}>
                         {
                             props.users.map((user, index) =>
-                                <option value={user._id} key={index}>{user._id}</option>
+                                <option value={user._id} key={index}>{user._id} - {user.name}</option>
                             )
                         }
                     </select>
                 </label>
-                {/*<input type="submit" value="Envoyer"/>*/}
+                <input type="submit" value="Envoyer"/>
 
                 <p>{error}</p>
             </form>
