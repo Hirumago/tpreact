@@ -1,24 +1,90 @@
-//import React from 'react';
-//import axios from "axios";
+import React from 'react';
+import axios from "axios";
 
 
-//const CreateStorage = () => {
-  //  const [rank, setRank] = React.useState("");
-  //  const [name, setName] = React.useState("");
-   // const [slots, setSlots] = React.useState("");
-   // const [type1, setType2] = React.useState("");
-  //  const [type2, setType2] = React.useState("");
-  //  const [owner, setOwner] = React.useState("");
+const CreateStorage = () => {
+   const [rank, setRank] = React.useState("");
+   const [name, setName] = React.useState("");
+   const [slots, setSlots] = React.useState("");
+   const [type1, setType1] = React.useState("");
+   const [type2, setType2] = React.useState("");
+   const [owner, setOwner] = React.useState("");
+   const [error, setError] = React.useState("");
 
-   // function handleChangeName(event){
-   //     setName(event.target.value);
-   // }
+    function handleChangeRank(event){
+        setRank(event.target.value);
+    }
 
-  //  function handleChangeEmail(event){
-   //     setEmail(event.target.value);
-   // }
+   function handleChangeName(event){
+       setName(event.target.value);
+   }
 
+   function handleChangeSlots(event){
+       setSlots(event.target.value);
+   }
 
-//}
+    function handleChangeType1(event){
+        setType1(event.target.value);
+    }
 
-//export default CreateStorage;
+    function handleChangeType2(event){
+        setType2(event.target.value);
+    }
+
+    function handleChangeOwner(event){
+        setOwner(event.target.value);
+    }
+
+    function handleSubmit(event) {
+        axios.post("http://localhost:3001/storages", {
+            rank: rank,
+            name: name,
+            slots: slots,
+            type1: type1,
+            type2: type2,
+            owner: owner
+        }, )
+            .then(res => {
+                    // this.state.refresh = true;
+                }
+            ).catch(error => {
+            setError("Erreur");
+        });
+        event.preventDefault();
+    }
+
+    return (
+        <div>
+            <h2>Créer une boîte de stockage</h2>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Rang :
+                    <input type="text" name="name" onChange={handleChangeRank} required={true}/>
+                </label>
+                <label>
+                    Nom :
+                    <input type="text" name="name" onChange={handleChangeName} required={true}/>
+                </label>
+                {/*<label>*/}
+                {/*<label>*/}
+                {/*    Type 1 :*/}
+                {/*    <input type="text" name="name" onChange={handleChangeType1} required={true}/>*/}
+                {/*</label>*/}
+                {/*<label>*/}
+                {/*    Type 2 :*/}
+                {/*    <input type="text" name="name" onChange={handleChangeType2} required={true}/>*/}
+                {/*</label>*/}
+                <label>
+                    Propriétaire :
+                    <input type="text" name="text" onChange={handleChangeOwner} required={true}/>
+                </label>
+                <input type="submit" value="Envoyer"/>
+
+                <p>{error}</p>
+            </form>
+        </div>
+    )
+
+}
+
+export default CreateStorage;

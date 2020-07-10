@@ -10,9 +10,9 @@ export default class Storage extends React.Component {
     render() {
         return (
             <div>
-                {/*<div>*/}
-                {/*    <CreateStorage></CreateStorage>*/}
-                {/*</div>*/}
+                <div>
+                    <CreateStorage></CreateStorage>
+                </div>
                 <div className="getStorage">
                     <GetStorages></GetStorages>
                 </div>
