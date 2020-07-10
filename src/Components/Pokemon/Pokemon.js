@@ -7,9 +7,9 @@ const Pokemon = () => {
 
         return (
             <div>
-                {/*<div>*/}
-                {/*    <CreatePokemon setRefreshPokemons = {setRefreshPokemons}></CreatePokemon>*/}
-                {/*</div>*/}
+                <div>
+                    <CreatePokemon setRefreshPokemons = {setRefreshPokemons}></CreatePokemon>
+                </div>
                 <div className="getPokemon">
                     <GetPokemons refreshPokemons = {refreshPokemons} setRefreshPokemons = {setRefreshPokemons}></GetPokemons>
                 </div>
