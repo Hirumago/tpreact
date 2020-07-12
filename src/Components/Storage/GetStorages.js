@@ -2,20 +2,24 @@ import React, {useEffect} from 'react';
 import axios from "axios";
 
 const GetStorages = (props) => {
-    const [url, setUrl] = React.useState("http://localhost:3001/storages");
-    const [refresh, setRefresh] = React.useState(false);
+    const url = "http://localhost:3001/storages";
+    const [refreshStorages, setRefreshStorages] = React.useState(false);
 
     useEffect(() => {
         axios.get(url)
             .then(res => {
+                console.log('la')
+
                 const storagesTemp = res.data;
                 props.setStorages(storagesTemp);
-                setRefresh(false);
                 props.setRefreshStorages(false);
+                setRefreshStorages(false);
+                const storageTemp = storagesTemp[0];
+                props.setStorage(storageTemp._id);
             }).catch((error) => {
             console.log(error);
         });
-    }, [url, refresh, props.refreshStorages]);
+    }, [refreshStorages]);
 
     return (
         <div>
@@ -49,11 +53,16 @@ const GetStorages = (props) => {
                         <td>{storage.owner}</td>
                         <td>
                             <button onClick={() =>
-                                axios.delete("http://localhost:3001/storages/" + storage._id + "/delete/"+storage.owner)
+
+                                axios.delete(url + "/" + storage._id + "/delete/"+storage.owner)
                                     .then(res => {
-                                        setRefresh(true)
+                                        props.setRefreshStorages(true);
+                                        setRefreshStorages(true);
                                     }).catch((error) => {
-                                    console.log(error);
+                                        let status = error.response.status;
+                                        if (status === 403) alert("L'espace de stockage n'est pas vide !");
+
+                                        console.log(error);
                                 })
                             }><img src="delete.png" alt="" className="icon"/></button>
 

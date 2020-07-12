@@ -8,10 +8,19 @@ const User = (props) => {
     return (
         <div>
             <div>
-                <CreateUser setRefreshUsers={setRefreshUsers}></CreateUser>
+                <CreateUser
+                    setRefreshUsers={setRefreshUsers}
+                ></CreateUser>
             </div>
             <div className="getUsers">
-                <GetUsers refreshUsers={refreshUsers} setRefreshUsers={setRefreshUsers} users={props.users} setUsers={props.setUsers}></GetUsers>
+                <GetUsers
+                    refreshUsers={refreshUsers}
+                    setRefreshUsers={setRefreshUsers}
+                    users={props.users}
+                    setUsers={props.setUsers}
+                    owner={props.owner}
+                    setOwner={props.setOwner}
+                ></GetUsers>
             </div>
         </div>
     )

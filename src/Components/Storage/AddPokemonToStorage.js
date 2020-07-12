@@ -2,29 +2,31 @@ import React from 'react';
 import axios from "axios";
 
 const CreateUser = (props) => {
-    const [storage, setStorage] = React.useState("");
-    const [pokemon, setPokemon] = React.useState("");
-    const [owner, setOwner] = React.useState("");
     const [error, setError] = React.useState("");
 
-    function handleChangeStorage(event){
-        setStorage(event.target.value);
+    function handleChangeStorage(event) {
+        props.setStorage(event.target.value);
     }
-    function handleChangePokemon(event){
-        setPokemon(event.target.value);
+
+    function handleChangePokemon(event) {
+        props.setPokemon(event.target.value);
     }
-    function handleChangeOwner(event){
-        setOwner(event.target.value);
+
+    function handleChangeOwner(event) {
+        props.setOwner(event.target.value);
     }
 
     function handleSubmit(event) {
-        axios.put("http://localhost:3001/storages/"+storage+"/add-pokemon/"+pokemon+"/"+owner, {
-
-        }, )
+        setError("");
+        console.log(props.storage)
+        axios.put("http://localhost:3001/storages/" + props.storage + "/add-pokemon/" + props.pokemon + "/" + props.owner)
             .then(res => {
-
+                    props.setRefreshStorages(true);
                 }
             ).catch(error => {
+                console.log(error.response)
+            setError(error.response.data.error)
+
             console.log(error);
         });
         event.preventDefault();

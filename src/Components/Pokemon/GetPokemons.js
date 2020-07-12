@@ -12,6 +12,8 @@ const GetPokemons = (props) => {
                 props.setPokemons(pokemonsTemp);
                 setRefresh(false);
                 props.setRefreshPokemons(false);
+                const pokemonTemp = pokemonsTemp[0];
+                props.setPokemon(pokemonTemp._id);
             }).catch((error) => {
             console.log(error);
         });

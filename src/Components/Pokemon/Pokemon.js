@@ -9,10 +9,19 @@ const Pokemon = (props) => {
         return (
             <div>
                 <div>
-                    <CreatePokemon setRefreshPokemons = {setRefreshPokemons}></CreatePokemon>
+                    <CreatePokemon
+                        setRefreshPokemons = {setRefreshPokemons}
+                    ></CreatePokemon>
                 </div>
                 <div className="getPokemon">
-                    <GetPokemons refreshPokemons = {refreshPokemons} setRefreshPokemons = {setRefreshPokemons} pokemons={props.pokemons} setPokemons={props.setPokemons}></GetPokemons>
+                    <GetPokemons
+                        refreshPokemons = {refreshPokemons}
+                        setRefreshPokemons = {setRefreshPokemons}
+                        pokemons={props.pokemons}
+                        setPokemons={props.setPokemons}
+                        pokemon={props.pokemon}
+                        setPokemon={props.setPokemon}
+                    ></GetPokemons>
                 </div>
             </div>
         )

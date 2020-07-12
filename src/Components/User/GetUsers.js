@@ -9,10 +9,11 @@ const GetUsers = (props) => {
         axios.get(url)
             .then(res => {
                 const usersTemp = res.data;
-                // setUsers(usersTemp);
                 props.setUsers(usersTemp);
                 setRefresh(false);
                 props.setRefreshUsers(false);
+                const ownerTemp = usersTemp[0];
+                props.setOwner(ownerTemp._id);
             }).catch((error) => {
             console.log(error);
         });
