@@ -13,12 +13,12 @@ const CreatePokemon = (props) => {
         setRank(event.target.value);
     }
 
-    function handleChangeName(event){
-        setName(event.target.value);
-    }
+        function handleChangeName(event){
+            setName(event.target.value);
+        }
 
-    function handleChangeType1(event){
-        setType1(event.target.value);
+        function handleChangeType1(event){
+            setType1(event.target.value);
     }
 
     function handleChangeType2(event){
@@ -58,13 +58,14 @@ const CreatePokemon = (props) => {
                 <label>
                     Nom :
                     <input type="text" name="name" onChange={handleChangeName} required={true}/>
-                </label><label>
+                </label>
+                <label>
                     Type 1 :
                     <input type="text" name="name" onChange={handleChangeType1} required={true}/>
                 </label>
                 <label>
                     Type 2 :
-                    <input type="text" name="name" onChange={handleChangeType2} required={true}/>
+                    <input type="text" name="name" onChange={handleChangeType2} required={false}/>
                 </label>
                 <label>
                     Niveau :

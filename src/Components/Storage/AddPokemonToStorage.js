@@ -33,7 +33,7 @@ const CreateUser = (props) => {
 
     return (
         <div>
-            <h2>Ajout un pokemon à un espace de stockage</h2>
+            <h2>Ajout d'un pokémon à un espace de stockage</h2>
             <form onSubmit={handleSubmit}>
                 <label>
                     Stockage :
@@ -46,7 +46,7 @@ const CreateUser = (props) => {
                     </select>
                 </label>
                 <label>
-                    Pokemon :
+                    Pokémon :
                     <select onChange={handleChangePokemon}>
                         {
                             props.pokemons.map((pokemon, index) =>
@@ -56,7 +56,7 @@ const CreateUser = (props) => {
                     </select>
                 </label>
                 <label>
-                    Owner :
+                    Propriétaire :
                     <select onChange={handleChangeOwner}>
                         {
                             props.users.map((user, index) =>
