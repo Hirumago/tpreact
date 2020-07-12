@@ -26,7 +26,6 @@ const Storage = (props) => {
     useEffect( () => {
         axios.get(url)
             .then(res => {
-                console.log('ici')
                 const storagesTemp = res.data;
                 props.setStorages(storagesTemp);
                 setLightRefreshStorages(false);

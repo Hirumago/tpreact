@@ -18,7 +18,6 @@ const CreateUser = (props) => {
 
     function handleSubmit(event) {
         setError("");
-        console.log(props.storage)
         axios.put("http://localhost:3001/storages/" + props.storage + "/add-pokemon/" + props.pokemon + "/" + props.owner)
             .then(res => {
                     props.setLightRefreshStorages(true);
@@ -67,7 +66,7 @@ const CreateUser = (props) => {
                 </label>
                 <input type="submit" value="Envoyer"/>
 
-                <p class="error">{error}</p>
+                <p className={"error"}>{error}</p>
             </form>
         </div>
     )

@@ -69,7 +69,7 @@ const CreateStorage = (props) => {
                 </label>
                 <input type="submit" value="Envoyer"/>
 
-                <p class="error">{error}</p>
+                <p className={"error"}>{error}</p>
             </form>
         </div>
     )

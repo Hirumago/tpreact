@@ -47,11 +47,6 @@
     margin: auto;
 }
 
-table th, table td, table{
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-
 .icon{
     width: 32px;
     height: 32px;
@@ -67,4 +62,74 @@ label, p, th, td, tr{
 
 .error{
     color: red;
+}
+
+th, td {
+    padding: 10px;
+    background-color: #e1e1e1;
+
+    border-left: 1px solid #34393B;
+    border-right: 1px solid #34393B;
+    border-bottom: 1px solid #34393B;
+
+}
+
+th:first-child, td:first-child {
+    border-left: none;
+}
+
+th:last-child, td:last-child {
+    border-right: none;
+}
+
+tr:last-child td{
+    border-bottom: none;
+}
+
+th{
+    background-color: #d7d7d7;
+}
+
+table {
+    border-collapse: collapse;
+    border-radius: 15px;
+}
+
+table th:first-child{
+    border-top-left-radius: 15px;
+}
+
+table th:last-child{
+    border-top-right-radius: 15px;
+}
+
+table tr:last-child td:first-child{
+    border-bottom-left-radius: 15px;
+}
+
+table tr:last-child td:last-child{
+    border-bottom-right-radius: 15px;
+}
+
+input, select{
+    margin: 0 5px;
+}
+
+input:hover, select:hover{
+    cursor: pointer;
+}
+
+table:last-child{
+    margin-bottom: 20px;
+}
+
+select, input{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #34393B;
+}
+
+input[type="submit"]{
+    background-color: #F6AA1E;
+    color: white;
 }
