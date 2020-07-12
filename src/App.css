@@ -64,3 +64,7 @@ h2{
 label, p, th, td, tr{
     color:#34393B;
 }
+
+.error{
+    color: red;
+}
