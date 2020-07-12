@@ -59,7 +59,13 @@ const CreateStorage = (props) => {
                 </label>
                 <label>
                     Propriétaire :
-                    <input type="text" name="text" onChange={handleChangeOwner} required={true}/>
+                    <select onChange={handleChangeOwner}>
+                        {
+                            props.users.map((user, index) =>
+                                <option value={user._id} key={index}>{user._id} - {user.name}</option>
+                            )
+                        }
+                    </select>
                 </label>
                 <input type="submit" value="Envoyer"/>
 

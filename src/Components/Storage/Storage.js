@@ -40,6 +40,7 @@ const Storage = (props) => {
             <div>
                 <CreateStorage
                     setRefreshStorages={setRefreshStorages}
+                    users={props.users}
                 ></CreateStorage>
             </div>
             <div className="getStorage">
