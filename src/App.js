@@ -11,9 +11,9 @@ function App() {
 
     return (
         <div className="App">
-            <User users={users} setUsers={setUsers}></User>
-            <Storage storages={storages} setStorages={setStorages} users={users} pokemons={pokemons}></Storage>
-            <Pokemon pokemons={pokemons} setPokemons={setPokemons}></Pokemon>
+                <User users={users} setUsers={setUsers}></User>
+                <Storage storages={storages} setStorages={setStorages} users={users} pokemons={pokemons}></Storage>
+                <Pokemon pokemons={pokemons} setPokemons={setPokemons}></Pokemon>
         </div>
     );
 }
