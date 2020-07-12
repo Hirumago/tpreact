@@ -1,25 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import axios from "axios";
 
 const GetStorages = (props) => {
-    const url = "http://localhost:3001/storages";
-    const [refreshStorages, setRefreshStorages] = React.useState(false);
-
-    useEffect(() => {
-        axios.get(url)
-            .then(res => {
-                console.log('la')
-
-                const storagesTemp = res.data;
-                props.setStorages(storagesTemp);
-                props.setRefreshStorages(false);
-                setRefreshStorages(false);
-                const storageTemp = storagesTemp[0];
-                props.setStorage(storageTemp._id);
-            }).catch((error) => {
-            console.log(error);
-        });
-    }, [refreshStorages]);
 
     return (
         <div>
@@ -54,10 +36,9 @@ const GetStorages = (props) => {
                         <td>
                             <button onClick={() =>
 
-                                axios.delete(url + "/" + storage._id + "/delete/"+storage.owner)
+                                axios.delete(props.url + "/" + storage._id + "/delete/"+storage.owner)
                                     .then(res => {
                                         props.setRefreshStorages(true);
-                                        setRefreshStorages(true);
                                     }).catch((error) => {
                                         let status = error.response.status;
                                         if (status === 403) alert("L'espace de stockage n'est pas vide !");

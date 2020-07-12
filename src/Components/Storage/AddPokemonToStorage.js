@@ -21,13 +21,11 @@ const CreateUser = (props) => {
         console.log(props.storage)
         axios.put("http://localhost:3001/storages/" + props.storage + "/add-pokemon/" + props.pokemon + "/" + props.owner)
             .then(res => {
-                    props.setRefreshStorages(true);
+                    props.setLightRefreshStorages(true);
                 }
             ).catch(error => {
-                console.log(error.response)
-            setError(error.response.data.error)
-
             console.log(error);
+            setError(error.response.data.error)
         });
         event.preventDefault();
     }
